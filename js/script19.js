@@ -33,3 +33,20 @@ switch (key) {
         console.log('...');
         break;
 }
+
+let hamburger = 2;
+const fries = 1;
+const cola = 0;
+
+if (hamburger === 3 && cola == 1 && fries) {
+    console.log('I am full');
+} else {
+    console.log('I am hungry');
+}
+
+hamburger++;
+console.log(hamburger === 3 && cola && fries);
+
+
+
+// false == null, '', undefined, NaN;
