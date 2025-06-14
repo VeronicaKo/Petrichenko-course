@@ -47,3 +47,4 @@ const users = {
 
 const userMap = new Map(Object.entries(users));
 console.log(userMap);
+const newUserObj = Object.fromEntries(userMap);
