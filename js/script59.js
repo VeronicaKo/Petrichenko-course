@@ -43,7 +43,6 @@ function amountOfPages(summary) {
   }
   return n;
 }
-
 console.log(amountOfPages(5));
 console.log(amountOfPages(25));
 console.log(amountOfPages(1095));
@@ -63,6 +62,23 @@ function isPangram(string) {
     });
   return true;
 }
-
 console.log(isPangram("The quick brown fox jumps over the lazy dog"));
 console.log(isPangram("Hello world"));
+
+function deepCount(a) {
+  let elemSum = 0;
+
+  a.forEach((el) => {
+    elemSum++;
+    if (Array.isArray(el)) {
+      elemSum = elemSum + deepCount(el);
+    }
+  });
+
+  return elemSum;
+}
+console.log(deepCount([1, 5, 3]));
+console.log(deepCount(["1", 5, "3", ["10"]]));
+console.log(deepCount([1, 2, [3, 4, [5]]]));
+console.log(deepCount([]));
+console.log(deepCount([[[[[[[[[]]]]]]]]]));
