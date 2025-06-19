@@ -30,3 +30,41 @@ class ColoredRectangleWithText extends Rectangle {
 
 const div = new ColoredRectangleWithText(13, 27, "Hi", "red");
 div.showMyPros();
+
+class MenuCard {
+  constructor(src, alt, title, descr, price, parentSelector) {
+    this.src = src;
+    this.alt = alt;
+    this.title = title;
+    this.descr = descr;
+    this.price = price;
+    this.parent = document.querySelector(parentSelector);
+    this.transfer = 80;
+    this.changeToEu();
+    // Object.assign(this, { src, alt, title, descr, price });
+  }
+
+  changeToEu() {
+    this.price = this.price / this.transfer;
+  }
+
+  render() {
+    const element = document.createElement("div");
+    element.innerHTML = `
+            <img src="${this.src}" alt="${this.alt}">
+            <h3>${this.title}</h3>
+            <p>${this.descr}</p>
+            <div>${this.price}</div>
+        `;
+    this.parent.append(element);
+  }
+}
+
+const div2 = MenuCard(
+  "img/t-shirt.jpg",
+  "t-shirt",
+  "T-shirt",
+  "The most popular product for all type of body shapes and sizes",
+  500,
+  ".cards"
+).render();
