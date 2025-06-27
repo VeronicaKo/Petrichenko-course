@@ -229,6 +229,34 @@ console.log(
 );
 
 /*Проверь, является ли строка палиндромом (например, "radar"). Игнорируй регистр и пробелы.*/
+function palindrom(str) {
+  const formatedStr = str.replaceAll(" ", "").toLowerCase();
+  let halfLenght = Math.floor(formatedStr.length / 2);
+  const left = formatedStr.substring(0, halfLenght);
+
+  if (halfLenght != formatedStr.length / 2) {
+    halfLenght++;
+  }
+
+  const right = formatedStr.substring(halfLenght).split("").reverse().join("");
+
+  return left === right;
+
+  // const len = formattedStr.length;
+  // for (let i = 0; i < Math.floor(len / 2); i++) {
+  //   if (formattedStr[i] !== formattedStr[len - 1 - i]) {
+  //     return false;
+  //   }
+  // }
+
+  // const reversedStr = formattedStr.split("").reverse().join("");
+  // return formattedStr === reversedStr;
+}
+
+console.log(palindrom("radar"));
+console.log(palindrom("zagar"));
+console.log(palindrom("t r u u R T"));
+console.log(palindrom("A man a plan a canal Panama")); // true
 
 /*Реализуй функцию isToday(date), которая проверяет, является ли переданная дата сегодняшней.
 isToday(new Date()); // true*/
