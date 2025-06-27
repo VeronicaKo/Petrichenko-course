@@ -141,6 +141,37 @@ console.log(
 
 /*Написать функцию, которая принимает массив интервалов (каждый интервал - это массив из
 двух чисел [начало, конец]) и объединяет все пересекающиеся интервалы.*/
+function mergeIntervals(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  let mergedIntervals = [intervals[0]];
+
+  for (let i = 1; i < intervals.length; i++) {
+    const current = intervals[i];
+    let lastMerged = mergedIntervals[mergedIntervals.length - 1];
+
+    if (current[0] <= lastMerged[1]) {
+      mergedIntervals[mergedIntervals.length - 1] = [
+        lastMerged[0],
+        Math.max(lastMerged[1], current[1]),
+      ];
+    } else {
+      mergedIntervals.push(current);
+    }
+  }
+
+  return mergedIntervals;
+}
+
+console.log(
+  mergeIntervals([
+    [6, 10],
+    [8, 12],
+    [14, 20],
+    [19, 22],
+    [23, 25],
+    [3, 6],
+  ])
+);
 
 /*Принимает начальное значение start. Возвращает объект с методами:
 get() - возвращает текущее значение
