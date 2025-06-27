@@ -177,6 +177,28 @@ console.log(
 get() - возвращает текущее значение
 increment() - увеличивает значение на 1
 reset() - сбрасывает к start*/
+function generateObject(value) {
+  let start = value;
+
+  return {
+    get: function () {
+      return start;
+    },
+    increment: function () {
+      start++;
+    },
+    reset: function () {
+      start = value;
+    },
+  };
+}
+
+const gen = generateObject(5);
+console.log(gen.get()); // 5
+gen.increment();
+console.log(gen.get()); // 6
+gen.reset();
+console.log(gen.get()); // 5
 
 /*Напиши функцию getUserNames(users), которая принимает массив объектов:
 [
