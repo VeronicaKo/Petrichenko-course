@@ -260,6 +260,18 @@ console.log(palindrom("A man a plan a canal Panama")); // true
 
 /*Реализуй функцию isToday(date), которая проверяет, является ли переданная дата сегодняшней.
 isToday(new Date()); // true*/
+function isToday(date) {
+  const today = new Date();
+  return (
+    date.getDate() == today.getDate() &&
+    date.getMonth() == today.getMonth() &&
+    date.getFullYear() == today.getFullYear()
+  );
+}
+
+console.log(isToday(new Date("2022-10-10T00:00:00.000Z")));
+console.log(isToday(new Date("2025-06-27T00:00:00.000Z")));
+console.log(isToday(new Date("2025-06-28T00:00:00.000Z")));
 
 /*
 Из объекта удалить поля, у которых значения null или undefined.
