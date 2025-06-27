@@ -1,5 +1,7 @@
 "use strict";
 
+const { jsx } = require("react/jsx-runtime");
+
 /*Рекурсивный обход структур
 Напишите функцию deepFlatten, которая рекурсивно преобразует многомерный массив в одномерный без использования flat()/flatMap().
 Пример: deepFlatten([1, [2, [3, 4], 5]]) → [1, 2, 3, 4, 5] */
@@ -102,14 +104,79 @@ multiplyByTwo.reset();
 
 console.log(multiplyByTwo()); // 2 (2 * 1)
 
-/*Реализовать функцию, которая принимает строку и возвращает длину самой длинной подстроки
-без повторяющихся символов.*/
+/*Реализовать функцию, которая принимает строку и возвращает длину самой длинной подстроки без повторяющихся символов.*/
+function substringWithoutRepeat(str) {
+  let substring = "";
+  let strNoRepeat = "";
+  let maxLength = 0;
+  for (i = 0; i < str.length; i++) {
+    for (j = i; j < str.length; j++) {
+      substring = str.substring(i, j);
+      strNoRepeat = new Set(substring.split(""));
+      if (
+        substring.length == strNoRepeat.size &&
+        strNoRepeat.size > maxLength
+      ) {
+        maxLength = substring.length;
+        //console.log(substring, strNoRepeat, maxLength);
+      }
+    }
+  }
+  return maxLength;
+}
+
+console.log(
+  substringWithoutRepeat("Sasha was walking on highway, and sucked bagel")
+);
+console.log(
+  substringWithoutRepeat(
+    "A Greek was driving across the river, and he saw a cancer in the river. He put the Greek's hand into the river, and the crab took his hand."
+  )
+);
+console.log(
+  substringWithoutRepeat(
+    "the ships maneuvered, maneuvered, but did not break through"
+  )
+);
 
 /*Написать функцию, которая принимает массив интервалов (каждый интервал - это массив из
 двух чисел [начало, конец]) и объединяет все пересекающиеся интервалы.*/
 
-/*Принимает начальное значение start
-Возвращает объект с методами:
+/*Принимает начальное значение start. Возвращает объект с методами:
 get() - возвращает текущее значение
 increment() - увеличивает значение на 1
 reset() - сбрасывает к start*/
+
+/*Напиши функцию getUserNames(users), которая принимает массив объектов:
+[
+  { id: 1, name: "Иван" },
+  { id: 2, name: "Мария" }
+]
+…и возвращает массив имён: ["Иван", "Мария"].*/
+
+/*Из массива объектов оставить только пользователей старше 18 лет:
+[
+  { name: "Иван", age: 17 },
+  { name: "Мария", age: 21 }
+]
+Результат: [ { name: "Мария", age: 21 } ]*/
+
+/*Проверь, является ли строка палиндромом (например, "radar"). Игнорируй регистр и пробелы.*/
+
+/*Реализуй функцию isToday(date), которая проверяет, является ли переданная дата сегодняшней.
+isToday(new Date()); // true*/
+
+/*
+Из объекта удалить поля, у которых значения null или undefined.
+{
+  name: "Мария",
+  age: null,
+  city: undefined,
+  email: "test@example.com"
+}
+ → { name: "Мария", email: "test@example.com" }*/
+
+/*Из строки 'name=ivan&age=25' получить объект { name: "ivan", age: "25" }*/
+
+/*Напиши функцию charCount(str), которая возвращает объект, где ключи — символы строки, значения — их количество:
+charCount("aabbcc") // { a: 2, b: 2, c: 2 }*/
