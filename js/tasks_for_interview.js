@@ -200,12 +200,20 @@ console.log(gen.get()); // 6
 gen.reset();
 console.log(gen.get()); // 5
 
-/*Напиши функцию getUserNames(users), которая принимает массив объектов:
-[
-  { id: 1, name: "Иван" },
-  { id: 2, name: "Мария" }
-]
-…и возвращает массив имён: ["Иван", "Мария"].*/
+/*Напиши функцию getUserNames(users), которая принимает массив объектов
+и возвращает массив имён: ["Иван", "Мария"].*/
+function getUserNames(users) {
+  let nameArray = [];
+  users.forEach((el) => nameArray.push(el.name));
+  return nameArray;
+}
+
+console.log(
+  getUserNames([
+    { id: 1, name: "Иван" },
+    { id: 2, name: "Мария" },
+  ])
+);
 
 /*Из массива объектов оставить только пользователей старше 18 лет:
 [
