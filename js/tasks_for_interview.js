@@ -288,7 +288,13 @@ console.log(
     email: "test@example.com",
   })
 );
-/*Из строки 'name=ivan&age=25' получить объект { name: "ivan", age: "25" }*/
+/*Из строки получить объект { name: "ivan", age: "25" }*/
+function objectFromString(str) {
+  let arr = str.split("&").map((el) => el.split("="));
+  return Object.fromEntries(arr);
+}
+
+console.log(objectFromString("name=ivan&age=25"));
 
 /*Напиши функцию charCount(str), которая возвращает объект, где ключи — символы строки, значения — их количество:
 charCount("aabbcc") // { a: 2, b: 2, c: 2 }*/
