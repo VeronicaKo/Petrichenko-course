@@ -298,3 +298,25 @@ console.log(objectFromString("name=ivan&age=25"));
 
 /*Напиши функцию charCount(str), которая возвращает объект, где ключи — символы строки, значения — их количество:
 charCount("aabbcc") // { a: 2, b: 2, c: 2 }*/
+function charCount(str) {
+  let obj = {};
+  let chairSet = new Set(str);
+  chairSet.forEach(
+    (key) => (obj[key] = str.match(new RegExp(key, "g")).length)
+  );
+
+  return obj;
+}
+
+function charCount(str) {
+  const obj = {};
+
+  for (const char of str) {
+    obj[char] = (obj[char] || 0) + 1;
+  }
+
+  return obj;
+}
+
+console.log(charCount("aabbcc"));
+console.log(charCount("rrrrrtppppppppppppppppppppbbbss"));
