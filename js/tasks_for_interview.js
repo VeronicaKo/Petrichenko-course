@@ -275,14 +275,19 @@ console.log(isToday(new Date("2025-06-28T00:00:00.000Z")));
 
 /*
 Из объекта удалить поля, у которых значения null или undefined.
-{
-  name: "Мария",
-  age: null,
-  city: undefined,
-  email: "test@example.com"
+→ { name: "Мария", email: "test@example.com" }*/
+function removeNull(obj) {
+  return Object.fromEntries(Object.entries(obj).filter((el) => el[1] != null));
 }
- → { name: "Мария", email: "test@example.com" }*/
 
+console.log(
+  removeNull({
+    name: "Мария",
+    age: null,
+    city: undefined,
+    email: "test@example.com",
+  })
+);
 /*Из строки 'name=ivan&age=25' получить объект { name: "ivan", age: "25" }*/
 
 /*Напиши функцию charCount(str), которая возвращает объект, где ключи — символы строки, значения — их количество:
