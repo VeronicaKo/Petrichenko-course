@@ -1,6 +1,6 @@
-"use strict";
+'use strict';
 
-const { x } = require("react/x-runtime");
+const { x } = require('react/x-runtime');
 
 /*Рекурсивный обход структур
 Напишите функцию deepFlatten, которая рекурсивно преобразует многомерный массив в одномерный без использования flat()/flatMap().
@@ -30,16 +30,16 @@ function parseUniqElements(arr) {
 }
 
 console.log(parseUniqElements([5, 8, 8, 1, 2, 3, 9, 0, 0, 1, 2, 2]));
-console.log(parseUniqElements([5, 8, "1", 1, 2, 3, 9, 0, 0, 1, 2, 2]));
+console.log(parseUniqElements([5, 8, '1', 1, 2, 3, 9, 0, 0, 1, 2, 2]));
 
 /*Написать функцию, которая принимает объект и возвращает новый объект, в котором ключи и
 значения поменяны местами. Если значения не уникальны, то в качестве значения использовать
 массив ключей.*/
 const address1 = {
-  street: "Petrova",
-  building: "12a",
-  city: "Vitebsk",
-  country: "Belarus",
+  street: 'Petrova',
+  building: '12a',
+  city: 'Vitebsk',
+  country: 'Belarus',
   apartment: 1,
   floor: 2,
   room: 1,
@@ -47,10 +47,10 @@ const address1 = {
 };
 
 const address2 = {
-  street: "Moskovskaya",
-  building: "15b",
-  city: "Frankfurt",
-  country: "Germany",
+  street: 'Moskovskaya',
+  building: '15b',
+  city: 'Frankfurt',
+  country: 'Germany',
   apartment: 52,
   floor: 15,
   room: 3,
@@ -106,13 +106,13 @@ console.log(multiplyByTwo()); // 2 (2 * 1)
 
 /*Реализовать функцию, которая принимает строку и возвращает длину самой длинной подстроки без повторяющихся символов.*/
 function substringWithoutRepeat(str) {
-  let substring = "";
-  let strNoRepeat = "";
+  let substring = '';
+  let strNoRepeat = '';
   let maxLength = 0;
   for (i = 0; i < str.length; i++) {
     for (j = i; j < str.length; j++) {
       substring = str.substring(i, j);
-      strNoRepeat = new Set(substring.split(""));
+      strNoRepeat = new Set(substring.split(''));
       if (
         substring.length == strNoRepeat.size &&
         strNoRepeat.size > maxLength
@@ -126,7 +126,7 @@ function substringWithoutRepeat(str) {
 }
 
 console.log(
-  substringWithoutRepeat("Sasha was walking on highway, and sucked bagel")
+  substringWithoutRepeat('Sasha was walking on highway, and sucked bagel')
 );
 console.log(
   substringWithoutRepeat(
@@ -135,7 +135,7 @@ console.log(
 );
 console.log(
   substringWithoutRepeat(
-    "the ships maneuvered, maneuvered, but did not break through"
+    'the ships maneuvered, maneuvered, but did not break through'
   )
 );
 
@@ -210,8 +210,8 @@ function getUserNames(users) {
 
 console.log(
   getUserNames([
-    { id: 1, name: "Иван" },
-    { id: 2, name: "Мария" },
+    { id: 1, name: 'Иван' },
+    { id: 2, name: 'Мария' },
   ])
 );
 
@@ -223,14 +223,14 @@ function getUserOlder(users) {
 
 console.log(
   getUserOlder([
-    { name: "Иван", age: 17 },
-    { name: "Мария", age: 21 },
+    { name: 'Иван', age: 17 },
+    { name: 'Мария', age: 21 },
   ])
 );
 
 /*Проверь, является ли строка палиндромом (например, "radar"). Игнорируй регистр и пробелы.*/
 function palindrom(str) {
-  const formatedStr = str.replaceAll(" ", "").toLowerCase();
+  const formatedStr = str.replaceAll(' ', '').toLowerCase();
   let halfLenght = Math.floor(formatedStr.length / 2);
   const left = formatedStr.substring(0, halfLenght);
 
@@ -238,7 +238,7 @@ function palindrom(str) {
     halfLenght++;
   }
 
-  const right = formatedStr.substring(halfLenght).split("").reverse().join("");
+  const right = formatedStr.substring(halfLenght).split('').reverse().join('');
 
   return left === right;
 
@@ -253,10 +253,10 @@ function palindrom(str) {
   // return formattedStr === reversedStr;
 }
 
-console.log(palindrom("radar"));
-console.log(palindrom("zagar"));
-console.log(palindrom("t r u u R T"));
-console.log(palindrom("A man a plan a canal Panama")); // true
+console.log(palindrom('radar'));
+console.log(palindrom('zagar'));
+console.log(palindrom('t r u u R T'));
+console.log(palindrom('A man a plan a canal Panama')); // true
 
 /*Реализуй функцию isToday(date), которая проверяет, является ли переданная дата сегодняшней.
 isToday(new Date()); // true*/
@@ -269,9 +269,9 @@ function isToday(date) {
   );
 }
 
-console.log(isToday(new Date("2022-10-10T00:00:00.000Z")));
-console.log(isToday(new Date("2025-06-27T00:00:00.000Z")));
-console.log(isToday(new Date("2025-06-28T00:00:00.000Z")));
+console.log(isToday(new Date('2022-10-10T00:00:00.000Z')));
+console.log(isToday(new Date('2025-06-27T00:00:00.000Z')));
+console.log(isToday(new Date('2025-06-28T00:00:00.000Z')));
 
 /*
 Из объекта удалить поля, у которых значения null или undefined.
@@ -282,19 +282,19 @@ function removeNull(obj) {
 
 console.log(
   removeNull({
-    name: "Мария",
+    name: 'Мария',
     age: null,
     city: undefined,
-    email: "test@example.com",
+    email: 'test@example.com',
   })
 );
 /*Из строки получить объект { name: "ivan", age: "25" }*/
 function objectFromString(str) {
-  let arr = str.split("&").map((el) => el.split("="));
+  let arr = str.split('&').map((el) => el.split('='));
   return Object.fromEntries(arr);
 }
 
-console.log(objectFromString("name=ivan&age=25"));
+console.log(objectFromString('name=ivan&age=25'));
 
 /*Напиши функцию charCount(str), которая возвращает объект, где ключи — символы строки, значения — их количество:
 charCount("aabbcc") // { a: 2, b: 2, c: 2 }*/
@@ -302,7 +302,7 @@ function charCount(str) {
   let obj = {};
   let chairSet = new Set(str);
   chairSet.forEach(
-    (key) => (obj[key] = str.match(new RegExp(key, "g")).length)
+    (key) => (obj[key] = str.match(new RegExp(key, 'g')).length)
   );
 
   return obj;
@@ -318,8 +318,8 @@ function charCount(str) {
   return obj;
 }
 
-console.log(charCount("aabbcc"));
-console.log(charCount("rrrrrtppppppppppppppppppppbbbss"));
+console.log(charCount('aabbcc'));
+console.log(charCount('rrrrrtppppppppppppppppppppbbbss'));
 
 /* Группировка объектов по ключу
 Описание: Реализуй функцию `groupBy(arr, key)`, группирующую массив объектов по указанному полю.
@@ -345,11 +345,11 @@ function groupBy(arr, key) {
 console.log(
   groupBy(
     [
-      { id: 1, category: "fruit" },
-      { id: 2, category: "vegetable" },
-      { id: 3, category: "fruit" },
+      { id: 1, category: 'fruit' },
+      { id: 2, category: 'vegetable' },
+      { id: 3, category: 'fruit' },
     ],
-    "category"
+    'category'
   )
 );
 
@@ -357,16 +357,59 @@ console.log(
 Описание: Напиши функцию, которая возвращает самое длинное слово в строке.
 longestWord("I love programming"); // "programming"
 */
+function longestWord(str) {
+  //return str.split(' ').sort((a, b) => b.length - a.length)[0];
+  return str
+    .split(' ')
+    .reduce((longest, current) =>
+      current.length > longest.length ? current : longest
+    );
+}
+
+console.log(longestWord('I love programming'));
 
 /* Форматирование числа как валюты
 Описание: Реализуй функцию, форматирующую число как строку с разделителями тысяч.
 formatCurrency(1234567); // "1,234,567"
 */
+function formatCurrency(num) {
+  const numAsStr = String(num);
+  let result = '';
+  let count = 0;
+
+  for (let i = numAsStr.length - 1; i >= 0; i--) {
+    count++;
+    result = numAsStr[i] + result;
+    if (count % 3 === 0 && i != 0) {
+      result = ',' + result;
+    }
+  }
+  return result;
+
+  //return new Intl.NumberFormat('en-US').format(num);
+}
+
+console.log(formatCurrency(1234567));
 
 /* Сравнение версий (semver)
 Описание: Напиши функцию, сравнивающую две строки-версии (`"1.10.2"` vs `"1.2.10"`).
 compareVersions("1.10.2", "1.2.10"); // 1 (первый больше)
 */
+function compareVersions(version1, version2) {
+  const ver1 = version1.split('.').map(Number);
+  const ver2 = version2.split('.').map(Number);
+  for (let i = 0; i < ver1.length; i++) {
+    if (ver1[i] > ver2[i]) {
+      return version1;
+    } else if (ver1[i] < ver2[i]) {
+      return version2;
+    }
+  }
+  return 'The versions are the same';
+}
+
+console.log(compareVersions('1.10.2', '1.2.10'));
+console.log(compareVersions('1.10.2', '1.10.2'));
 
 /* 🧠 10. Кэширующая обёртка вокруг функции (memoization)
 Описание: Реализуй функцию `memoize(fn)`, которая запоминает результаты вызова.
@@ -375,10 +418,55 @@ memoized(2, 3); // вычисляет
 memoized(2, 3); // берёт из кэша
 */
 
+function memoize(fn) {
+  const cache = new Map();
+
+  return function (a, b) {
+    const key = `${a},${b}`;
+
+    if (cache.has(key)) {
+      console.log('Из кэша:', key);
+      return cache.get(key);
+    }
+
+    const result = fn(a, b);
+    cache.set(key, result);
+    console.log('Вычислено:', key);
+    return result;
+  };
+}
+
+const add = (a, b) => a + b;
+const memoizedAdd = memoize(add);
+console.log(memoizedAdd(2, 3));
+console.log(memoizedAdd(2, 3));
+
 /*Проверка корректности скобочной последовательности
 Напиши функцию, которая проверяет, является ли строка с разными типами скобок (()[]{}) корректной.
 isValidBrackets("({[]})"); // true
 isValidBrackets("([)]");   // false*/
+
+function isValidBrackets(str) {
+  const pairs = { '{': '}', '(': ')', '[': ']' };
+  const stack = [];
+
+  for (const char of str) {
+    if (pairs[char]) {
+      stack.push(char);
+    } else {
+      const lastOpen = stack.pop();
+      if (pairs[lastOpen] !== char) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+
+console.log(isValidBrackets('({[]})'));
+console.log(isValidBrackets('([)]'));
+console.log(isValidBrackets('()[]{}'));
 
 /*Преобразование строки в camelCase
 Реализуй функцию, которая приводит строку к camelCase, игнорируя пробелы, дефисы и подчёркивания.
