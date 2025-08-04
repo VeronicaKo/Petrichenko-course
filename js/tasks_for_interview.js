@@ -473,14 +473,51 @@ console.log(isValidBrackets('()[]{}'));
 toCamelCase("background-color"); // "backgroundColor"
 toCamelCase("my_var-name");     // "myVarName"*/
 
+function toCamelCase(str) {
+  const formated = str
+    .replaceAll('_', ' ')
+    .replaceAll('-', ' ')
+    .split(' ')
+    .filter((word) => word.length > 0);
+
+  return formated
+    .map((v, i) => (i != 0 ? v[0].toUpperCase() + v.substring(1) : v))
+    .join('');
+}
+
+console.log(toCamelCase('background-color'));
+console.log(toCamelCase('my_var-name'));
+console.log(toCamelCase('foo--bar__baz'));
+
 /*Подсчёт количества уникальных элементов в массиве объектов по ключу
-Реализуй функцию, которая считает, сколько раз встречается каждый уникальный объект по заданному полю.
+Реализуй функцию, которая считает, сколько раз встречается каждый уникальный объект по заданному
+полю.
 countUniqueBy([
   { id: 1, group: 'a' },
   { id: 2, group: 'b' },
   { id: 3, group: 'a' }
 ], 'group');
 // { a: 2, b: 1 }*/
+
+function countUniqueBy(arr, key) {
+  const result = {};
+  const values = arr.map((v) => v[key]);
+  values.forEach((v) =>
+    result.hasOwnProperty(v) ? (result[v] = result[v] + 1) : (result[v] = 1)
+  );
+  return result;
+}
+
+console.log(
+  countUniqueBy(
+    [
+      { id: 1, group: 'a' },
+      { id: 2, group: 'b' },
+      { id: 3, group: 'a' },
+    ],
+    'group'
+  )
+);
 
 /*Поиск наибольшей общей подстроки (longest common substring)
 Напиши функцию, которая находит самую длинную общую подстроку между двумя строками.
