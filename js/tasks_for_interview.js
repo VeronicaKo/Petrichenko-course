@@ -603,6 +603,17 @@ console.log(romanize(7));
 Напиши функцию, которая проверяет, являются ли две строки анаграммами (содержат одни и те же буквы в разном порядке).
 isAnagram("listen", "silent"); // true
 isAnagram("hello", "world");   // false*/
+function isAnagram(world1, world2) {
+  if (world1.length != world2.length) return false;
+  if (world1.split('').sort().join('') == world2.split('').sort().join('')) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isAnagram('listen', 'silent'));
+console.log(isAnagram('hello', 'world'));
 
 /*Транспонирование матрицы (двумерного массива)
 Реализуй функцию, которая транспонирует матрицу (меняет местами строки и столбцы).
