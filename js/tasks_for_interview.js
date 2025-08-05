@@ -521,8 +521,42 @@ console.log(
 
 /*Поиск наибольшей общей подстроки (longest common substring)
 Напиши функцию, которая находит самую длинную общую подстроку между двумя строками.
-longestCommonSubstring("abcde", "abcfde"); // "abc" или "de" — зависит от реализации
+longestCommonSubstring("abcde", "vabcfde"); // "abc" или "de" — зависит от реализации
 Сериализация и десериализация объекта без ON.stringify/parse*/
+
+function longestCommonSubstring(str1, str2) {
+  if (!str1 || !str2) return '';
+
+  let maxLength = 0;
+  let endIndex = 0;
+  const dp = Array(str2.length + 1).fill(0);
+
+  for (let i = 1; i <= str1.length; i++) {
+    let prev = 0;
+    for (let j = 1; j <= str2.length; j++) {
+      const temp = dp[j];
+      if (str1[i - 1] === str2[j - 1]) {
+        dp[j] = prev + 1;
+        if (dp[j] > maxLength) {
+          maxLength = dp[j];
+          endIndex = i - 1;
+        }
+      } else {
+        dp[j] = 0;
+      }
+      prev = temp;
+    }
+  }
+
+  return maxLength > 0
+    ? str1.substring(endIndex - maxLength + 1, endIndex + 1)
+    : '';
+}
+
+console.log(longestCommonSubstring('abcde', 'vabcfde')); // "abc" или "cde"
+console.log(longestCommonSubstring('abcdef', 'xabydzef')); // "ef"
+console.log(longestCommonSubstring('hello', 'world')); // "l"
+console.log(longestCommonSubstring('', 'test')); // ""
 
 /*Реализуй пару функций serialize(obj) и deserialize(str), которые могут сериализовать простой объект в строку и обратно
 (без использования стандартных методов).
