@@ -567,6 +567,37 @@ deserialize(str); // { name: "Alice", age: 25 }*/
 /*Форматирование числа как римского
 Реализуй функцию, которая принимает число и возвращает его представление в виде римского.
 romanize(1998); // "MCMXCVIII"*/
+function romanize(num) {
+  const table = [
+    [1000, 'M'],
+    [900, 'CM'],
+    [500, 'D'],
+    [400, 'CD'],
+    [100, 'C'],
+    [90, 'XC'],
+    [50, 'L'],
+    [40, 'XL'],
+    [10, 'X'],
+    [9, 'IX'],
+    [5, 'V'],
+    [4, 'IV'],
+    [1, 'I'],
+  ];
+
+  let result = '';
+
+  for (const [value, numeral] of table) {
+    while (num >= value) {
+      result += numeral;
+      num -= value;
+    }
+  }
+
+  return result;
+}
+
+console.log(romanize(1998));
+console.log(romanize(7));
 
 /*Определение анаграммы
 Напиши функцию, которая проверяет, являются ли две строки анаграммами (содержат одни и те же буквы в разном порядке).
