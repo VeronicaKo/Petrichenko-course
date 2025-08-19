@@ -632,3 +632,26 @@ runPromisesInSeries([
   () => delay(100).then(() => console.log("B")),
 ]);
 // Выведет A → B через 100 мс*/
+
+/**
+ * @param message - строка для проверки
+ * @param bannedWords - массив запрещенных слов (например: ['политика', 'война'])
+ * @returns true если есть запрещенное слово, иначе false
+ */
+function hasBannedWord(message, bannedWords) {
+  let formattedWord = message.toLowerCase();
+  return bannedWords.filter((word) => formattedWord.includes(word)).length > 0;
+}
+
+console.log(hasBannedWord('Когда Война настанет', ['политика', 'война']));
+console.log(hasBannedWord('Когда ромашки расцветут', ['политика', 'война']));
+
+
+function isPalindrome(str) {
+  let formatedStr = str.toLowerCase().replaceAll(' ', '');
+  let reversedStr = formatedStr.split('').reverse().join('');
+  return formatedStr === reversedStr;
+}
+
+console.log(isPalindrome('А роза упала на лапу Азора'));
+console.log(isPalindrome('JavaScript'));
