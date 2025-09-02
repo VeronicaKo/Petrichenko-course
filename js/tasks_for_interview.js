@@ -646,7 +646,6 @@ function hasBannedWord(message, bannedWords) {
 console.log(hasBannedWord('Когда Война настанет', ['политика', 'война']));
 console.log(hasBannedWord('Когда ромашки расцветут', ['политика', 'война']));
 
-
 function isPalindrome(str) {
   let formatedStr = str.toLowerCase().replaceAll(' ', '');
   let reversedStr = formatedStr.split('').reverse().join('');
@@ -655,3 +654,21 @@ function isPalindrome(str) {
 
 console.log(isPalindrome('А роза упала на лапу Азора'));
 console.log(isPalindrome('JavaScript'));
+
+//Напиши функцию, которая находит первое отсутствующее положительное число в массиве.
+function firstMissingPositive(nums) {
+  nums.sort((a, b) => a - b);
+  console.log(nums);
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < 0) {
+      continue;
+    }
+    if (nums[i] != nums[i + 1] - 1) {
+      return nums[i] + 1;
+    }
+  }
+}
+
+console.log(firstMissingPositive([1, 2, 0])); // 3
+console.log(firstMissingPositive([3, 4, -1, 1])); // 2
+console.log(firstMissingPositive([7, 8, 9, 11, 12])); // 1
